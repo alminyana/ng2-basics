@@ -1,3 +1,39 @@
-<p>
-  todo works!
-</p>
+<div class="container">
+	<div class="page-header">
+		<h2>Todo <small>LIST</small></h2>
+	</div>
+	<div class="row">
+			<div class="col-xs-12">
+				<ul class="list-unstyled list-inline list-group">
+					<li class=""><button class="btn btn-primary btn-sm" (click)="setAppState('default')">add Todo form</button></li>
+					<li class=""><button class="btn btn-info btn-sm" (click)="setAppState('edit')">edit Todo form</button></li>
+					<li class=""><button class="btn btn-danger btn-sm" (click)="setAppState('null')">hide form</button></li>
+				</ul>
+			</div>
+		</div>
+
+	<div *ngIf="appState == 'edit'" class="well">
+		<h4>EDIT TODO</h4>
+		<form name="addtodo" (submit)="updateTodo()">
+			<input class="form-control" type="text" [(ngModel)]="text" name="addtodo">
+		</form>
+	</div>
+
+	<div class="well" *ngIf="appState == 'default'">
+		<h4>ADD TODO</h4>
+		<form name="addtodo" (submit)="addTodo()">
+			<input class="form-control" type="text" [(ngModel)]="text" name="addtodo">
+		</form>
+	</div>
+	<div class="well">
+		<ul class="list-unstyled list-group">
+			<li *ngFor="let todo of todos" class="list-group-item">
+				<span (click)="editTodo(todo)">
+					{{todo.text}}
+					&nbsp;<button class="btn btn-xs btn-primary left1" (click)="editTodo(todo)">Edit</button>
+					<button class="btn btn-xs btn-warning left1" (click)="deleteTodo(todo.text)">X</button>
+				</span>
+			</li>
+		</ul>
+	</div>
+</div>
