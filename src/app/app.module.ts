@@ -8,11 +8,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SecondComponent } from './second/second.component';
 import { RouterModule } from '@angular/router';
+import { TodoComponent } from './todo/todo.component';
 
 
 const routes = [
     {path: '', component:HomeComponent},
-    {path: 'second', component:SecondComponent}
+    {path: 'second', component:TodoComponent}
   ];
 
 
@@ -22,7 +23,8 @@ const routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    SecondComponent
+    SecondComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
